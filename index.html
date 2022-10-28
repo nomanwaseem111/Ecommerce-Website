@@ -99,6 +99,14 @@
 
     <script>
 
+        let baseUrl;
+
+        if (window.location.href.indexOf("https") === -1) {
+            baseUrl = "http://localhost:3000"
+
+        } else {
+            baseUrl = "https://ali-express-crud.herokuapp.com/"
+        }
 
         const createProduct = () => {
 
@@ -111,7 +119,7 @@
             const currencyCode = document.getElementById('currencyCode').value
 
 
-            axios.post('https://ali-express-crud.herokuapp.com/product', {
+            axios.post(`${baseUrl}/product`, {
                 productName,
                 productPrice,
                 shopName,

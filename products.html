@@ -71,13 +71,22 @@
 
     <script>
 
+        let baseUrl;
+
+        if (window.location.href.indexOf("https") === -1) {
+            baseUrl = "http://localhost:3000"
+
+        } else {
+            baseUrl = "https://ali-express-crud.herokuapp.com/"
+        }
+
 
         const getData = async () => {
 
 
             try {
 
-                let response = await axios.get('https://ali-express-crud.herokuapp.com/products')
+                let response = await axios.get(`${baseUrl}/products`)
                 // handle success
                 console.log(response.data.data);
 
