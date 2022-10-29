@@ -83,6 +83,30 @@ p{
     margin-bottom: 0px;
 }
 
+.delete{
+    background-color: #ff4747;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    margin-top: 15px;
+    border-radius: 5px;
+    padding: 5px;
+    width: 60px;
+
+}
+
+.edit{
+    background-color: green;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    margin-top: 15px;
+    border-radius: 5px;
+    padding: 5px;
+    width: 60px;
+    margin-left: 5px;
+}
+
 .price{
     font-weight: 600;
     padding-left: 10px;

@@ -51,7 +51,6 @@
 
 
 
-
     </div>
 
 
@@ -71,6 +70,8 @@
 
     <script>
 
+
+
         let baseUrl;
 
         if (window.location.href.indexOf("https") === -1) {
@@ -81,7 +82,7 @@
         }
 
 
-        const getData = async () => {
+        let getData = async () => {
 
 
             try {
@@ -93,8 +94,11 @@
 
                 let main = document.querySelector('.main')
 
+                main.innerHTML = "";
 
                 response.data.data.map((eachProduct) => {
+
+                    // console.log(eachProduct);
 
                     main.innerHTML += `    <div class="productList">
             <img src="https://ae01.alicdn.com/kf/Sf0039992824246869357b60631469058S/Xiaomi-Air2-Pro-Bluetooth-Earphone-Mi-Air-2-Pro-True-Wireless-Headphones-Environmental-ENC-Active-Noise.jpg_220x220xz.jpg_.webp" alt="">
@@ -103,6 +107,10 @@
             <p class="numberOfSale">${eachProduct.numberOfSale || 0} Sold</p>
             <p class="isFreeShipping">${(eachProduct.isFreeShipping) ? "Free Shipping" : "No Free Shipping"}</p>
             <p class="shopName">${eachProduct.shopName}</p>
+            <button class="delete" onclick="deleteProduct('${eachProduct._id}')">Delete</button>
+            <button class="edit" onclick="deleteProduct('${eachProduct._id}')">Edit</button>
+
+
         </div>`
 
 
@@ -117,6 +125,37 @@
 
         }
         getData()
+
+
+        let deleteProduct = async (id) => {
+
+
+
+            let response = await axios.delete(`${baseUrl}/product/${id}`)
+                .catch(e => {
+
+                    console.log("db error in deleting product");
+                    return
+                })
+
+            if (response) {
+                console.log("Deleting product")
+                getData();
+
+
+            }
+            
+
+
+
+
+
+
+
+        }
+
+
+
 
     </script>
 

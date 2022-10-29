@@ -77,6 +77,21 @@ app.get('/products', async (req, res) => {
 
 })
 
+app.delete('/product/:id' , async (req,res) => {
+
+    let _id = req.params.id;
+
+    let response =  await productModel.findByIdAndDelete(_id).catch(e => {
+        console.log("error ", e);
+        res.status(500).send({message:"db error"})
+        return;
+    })
+
+    console.log("response", response);
+    res.status(200).send({message: "deleted Product"})   
+    
+})
+
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })
