@@ -72,14 +72,14 @@
 
 
 
-        let baseUrl;
+        // let baseUrl;
 
-        if (window.location.href.indexOf("https") === -1) {
-            baseUrl = "http://localhost:3000"
+        // if (window.location.href.indexOf("https") === -1) {
+        //     baseUrl = "http://localhost:3000"
 
-        } else {
-            baseUrl = "https://ali-express-crud.herokuapp.com/"
-        }
+        // } else {
+        //     baseUrl = "https://ali-express-crud.herokuapp.com/"
+        // }
 
 
         let getData = async () => {
@@ -87,7 +87,7 @@
 
             try {
 
-                let response = await axios.get(`${baseUrl}/products`)
+                let response = await axios.get("https://ali-express-crud.herokuapp.com/products")
                 // handle success
                 console.log(response.data.data);
 
@@ -131,7 +131,7 @@
 
 
 
-            let response = await axios.delete(`${baseUrl}/product/${id}`)
+            let response = await axios.delete("https://ali-express-crud.herokuapp.com/product/${id}")
                 .catch(e => {
 
                     console.log("db error in deleting product");
