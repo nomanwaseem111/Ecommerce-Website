@@ -91,7 +91,7 @@
 
             try {
 
-                let response = await axios.get("https://ali-express-crud.herokuapp.com//products")
+                let response = await axios.get("https://ali-express-crud.herokuapp.com/products")
                 // handle success
                 console.log(response.data.data);
 
@@ -161,7 +161,7 @@
 
         let editProduct = async(id) => {
             
-            let response = await axios.get(`https://ali-express-crud.herokuapp.com//product/${id}`)
+            let response = await axios.get(`https://ali-express-crud.herokuapp.com/product/${id}`)
                 .catch(e => {
 
                     console.log("db error in editing product", e);
