@@ -115,6 +115,16 @@ p{
 
 }
 
+.updateForm{
+    position: fixed;
+    top: 10%;
+    left: 25%;
+    background-color: #ff4747;
+    width: 900px;
+    border-radius: 20px;
+    color: #fff;
+}
+
 .currencyCode{
     font-size: 16px;
     padding-top: 10px;

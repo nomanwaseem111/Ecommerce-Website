@@ -53,7 +53,7 @@
 
     </div>
 
-    <div class="main2">
+    <div class="updateForm">
 
     </div>
 
@@ -148,7 +148,7 @@
 
 
             }
-            
+
 
 
 
@@ -159,8 +159,8 @@
         }
 
 
-        let editProduct = async(id) => {
-            
+        let editProduct = async (id) => {
+
             let response = await axios.get(`https://ali-express-crud.herokuapp.com/product/${id}`)
                 .catch(e => {
 
@@ -169,31 +169,100 @@
                 })
 
             if (response) {
-                console.log("Editing product" , response.data.data)
-
-                let main2 = document.querySelector('.main2')
+                console.log("Editing product", response.data.data)
 
 
-        //         response.data.data.map((eachProduct) => {
-        //             main2.innerHTML += `    <div class="productList">
-        //     <img src="https://ae01.alicdn.com/kf/Sf0039992824246869357b60631469058S/Xiaomi-Air2-Pro-Bluetooth-Earphone-Mi-Air-2-Pro-True-Wireless-Headphones-Environmental-ENC-Active-Noise.jpg_220x220xz.jpg_.webp" alt="">
-        //     <p class="productName">${eachProduct.productName}</p>
-        //     <p><span class="currencyCode">${eachProduct.currencyCode}</span><span class="price">${eachProduct.productPrice}</span></p>
-        //     <p class="numberOfSale">${eachProduct.numberOfSale || 0} Sold</p>
-        //     <p class="isFreeShipping">${(eachProduct.isFreeShipping) ? "Free Shipping" : "No Free Shipping"}</p>
-        //     <p class="shopName">${eachProduct.shopName}</p>
-        //     <button class="delete" onclick="deleteProduct('${eachProduct._id}')">Delete</button>
-        //     <button class="edit" onclick="editProduct('${eachProduct._id}')">Edit</button>
+                let product = response.data.data
+
+                console.log(product);
+
+                let updateForm = document.querySelector('.updateForm').innerHTML = `
+                
+        <form class="row g-3" onsubmit="completeUpdate(); return false">
+            <div class="col-md-6">
+            <label for="productName" class="form-label">Product Id</label>
+            <input type="text" class="form-control" value="${product._id}" disabled id="productId" required>
+        </div>
+            <div class="col-md-6">
+            <label for="productName" class="form-label">Product Name</label>
+            <input type="text" class="form-control" value="${product.productName}" id="productName" required>
+        </div>
+        <div class="col-md-6">
+            <label for="productPrice" class="form-label">Product Price</label>
+            <input type="number" class="form-control" value="${product.productPrice}" id="productPrice" required>
+        </div>
+        <div class="col-12">
+            <label for="shopName" class="form-label">Shop Name</label>
+            <input type="text" class="form-control" value="${product.shopName}" id="shopName" placeholder="Shop Name" required>
+        </div>
+        <div class="col-12">
+            <label for="numberOfSale" class="form-label">Number of Sale</label>
+            <input type="number" class="form-control" value="${product.numberOfSale}" id="numberOfSale" placeholder=" Number Of Sale" required>
+        </div>
+        <div class="col-md-6">
+            <label for="productRating" class="form-label">Product Rating</label>
+            <input type="number" min="0" max="5" class="form-control" value="${product.productRating}" id="productRating" required>
+        </div>
+        <div class="col-md-4">
+            <label for="isFreeShipping" class="form-label">Free Shipping</label>
+            <select id="isFreeShipping" class="form-select" required>
+                <option ${(product.isFreeShipping) ? "selected" : ""} value="true">Yes</option>
+                <option ${(!product.isFreeShipping) ? "selected" : ""} value="false">No</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label for="currencyCode" class="form-label">Currency Code</label>
+            <input type="text" class="form-control" value="${product.currencyCode}" id="currencyCode" required>
+        </div>
+
+        <input type="submit" value="Update Product" class="btn btn-primary" id="">
+        <p id="message"></p>
+
+        <p id="result"></p>
+
+    </form>
+`
 
 
-        // </div>`
 
-        //         })
 
-               
+
 
             }
-             
+
+        }
+
+
+        const completeUpdate = () => {
+            const productId = document.getElementById('productId').value
+
+            const productName = document.getElementById('productName').value
+            const productPrice = document.getElementById('productPrice').value
+            const shopName = document.getElementById('shopName').value
+            const numberOfSale = document.getElementById('numberOfSale').value
+            const productRating = document.getElementById('productRating').value
+            const isFreeShipping = document.getElementById('isFreeShipping').value
+            const currencyCode = document.getElementById('currencyCode').value
+
+
+            axios.put(`https://ali-express-crud.herokuapp.com/product/${productId}`, {
+                productName,
+                productPrice,
+                shopName,
+                numberOfSale,
+                productRating,
+                isFreeShipping,
+                currencyCode
+
+            })
+                .then(function (response) {
+                    console.log(response.data.message);
+                    document.getElementById('result').innerHTML = response.data.message
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+
         }
 
     </script>
