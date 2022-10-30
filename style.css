@@ -219,16 +219,7 @@ p{
     margin-top: 30px;
 }
 
-.updateForm{
-    position: fixed;
-    top: 10%;
-    left: 1%;
-    background-color: #ff4747;
-    width: 350px;
-    border-radius: 20px;
-    color: #fff;
-    height: 800px;
-}
+
 /* .navbar-toggler-icon{
     margin-right: 15px !important;
 } */
