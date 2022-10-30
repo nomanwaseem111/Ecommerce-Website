@@ -109,6 +109,25 @@ app.delete('/product/:id' , async (req,res) => {
     
 })
 
+
+app.put('/product/:id' , async (req,res) => {
+
+    let _id = req.params.id;
+    let body = req.body
+
+    let response =  await productModel.findByIdAndUpdate(_id , body)
+    .catch(e => {
+        console.log("error ", e);
+        res.status(500).send({message:"db error"})
+        return;
+    })
+
+    console.log("Updated Product ", response);
+    res.status(200).send({message: "Updated Product"})   
+    
+})
+
+
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
 })

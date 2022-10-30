@@ -257,6 +257,9 @@
             })
                 .then(function (response) {
                     console.log(response.data.message);
+                    document.querySelector('.updateForm').innerHTML = ``
+                    getData()
+
                 })
                 .catch(function (error) {
                     console.log(error);
