@@ -98,7 +98,8 @@ app.delete('/product/:id' , async (req,res) => {
 
     let _id = req.params.id;
 
-    let response =  await productModel.findByIdAndDelete(_id).catch(e => {
+    let response =  await productModel.findByIdAndDelete(_id)
+    .catch(e => {
         console.log("error ", e);
         res.status(500).send({message:"db error"})
         return;
