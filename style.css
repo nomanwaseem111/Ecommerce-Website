@@ -204,8 +204,18 @@ p{
     font-size: 20px;
     padding-left: 10px;
 }
- 
+
+.updateForm{
+    position: absolute;
+    top: 15%;
+    left: 1%;
+    background-color: #ff4747;
+    width: 350px;
+    border-radius: 20px;
+    color: #fff;
+    
 }
+
 
 .productName{
     display: inline-block;
@@ -219,20 +229,20 @@ p{
     margin-top: 30px;
 }
 
-.updateForm{
-    position: absolute;
-    top: 15%;
-    left: 1%;
-    background-color: #ff4747;
-    width: 350px;
-    border-radius: 20px;
-    color: #fff;
-    
-}
-
 #updateProduct{
     width: 700px;
 }
+
+.navbar-toggler{
+    margin-right: 10px;}
+ 
+}
+
+
+
+
+
+
 
 
 
@@ -240,5 +250,3 @@ p{
     margin-right: 15px !important;
 } */
 
-.navbar-toggler{
-    margin-right: 10px;
