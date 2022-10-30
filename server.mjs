@@ -77,6 +77,23 @@ app.get('/products', async (req, res) => {
 
 })
 
+app.get('/product/:id', async (req, res) => {
+
+    
+
+    let result = await productModel.findOne( {_id : req.params.id})
+        .exec()
+        .catch(e => {
+            console.log("getting eror in product", e);
+            res.status(500).send({ message: "getting error in edit product" })
+            return;
+        })
+
+    console.log("result: ", result);
+    res.send({data: result})
+
+})
+
 app.delete('/product/:id' , async (req,res) => {
 
     let _id = req.params.id;

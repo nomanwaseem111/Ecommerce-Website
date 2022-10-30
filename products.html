@@ -108,7 +108,7 @@
             <p class="isFreeShipping">${(eachProduct.isFreeShipping) ? "Free Shipping" : "No Free Shipping"}</p>
             <p class="shopName">${eachProduct.shopName}</p>
             <button class="delete" onclick="deleteProduct('${eachProduct._id}')">Delete</button>
-            <button class="edit" onclick="deleteProduct('${eachProduct._id}')">Edit</button>
+            <button class="edit" onclick="editProduct('${eachProduct._id}')">Edit</button>
 
 
         </div>`
@@ -155,7 +155,22 @@
         }
 
 
+        let editProduct = async(id) => {
+            
+            let response = await axios.get(`https://ali-express-crud.herokuapp.com/product/${id}`)
+                .catch(e => {
 
+                    console.log("db error in editing product", e);
+                    return
+                })
+
+            if (response) {
+                console.log("Editing product" , response.data.data)
+
+
+            }
+             
+        }
 
     </script>
 
