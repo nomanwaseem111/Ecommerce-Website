@@ -135,7 +135,7 @@
 
 
 
-            let response = await axios.delete("https://ali-express-crud.herokuapp.com/product/${id}")
+            let response = await axios.delete(`https://ali-express-crud.herokuapp.com/product/${id}`)
                 .catch(e => {
 
                     console.log("db error in deleting product");
